@@ -78,6 +78,7 @@ hi def link cmake_gaudi_add_library Function
 hi def link cmake_gaudi_add_module Function
 hi def link cmake_gaudi_add_dictionary Function
 hi def link cmake_gaudi_common_add_build Function
+hi def link cmake_gaudi_function_without_keyword Function
 hi def link GaudiAddLibraryArguments ModeMsg
 hi def link GaudiAddModuleArguments ModeMsg
 hi def link GaudiAddDictionaryArguments ModeMsg
