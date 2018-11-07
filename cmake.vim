@@ -32,11 +32,19 @@ syn region GaudiCommonAddBuildRegion start="(" end=")" contains=GaudiCommonAddBu
 
 syn region BareParentheses start="(" end=")" contains=ALLBUT,DoesNotExist contained
 
+syn region GaudiProjectRegion start="(" end=")" contains=GaudiProjectArguments contained
+
 syn case match
 
 syn keyword GaudiCommonAddBuildArguments contained
         \ LINK_LIBRARIES
         \ INCLUDE_DIRS
+
+syn keyword GaudiProjectArguments contained
+        \ USE
+        \ TOOLS
+        \ DATA
+        \ FORTRAN
 
 syn keyword GaudiAddDictionaryArguments contained
         \ SPLIT_CLASSDEF
@@ -84,17 +92,23 @@ syn keyword cmake_gaudi_function_without_keyword
            \ gaudi_install_joboptions
            \ nextgroup=BareParentheses
 
+syn keyword cmake_gaudi_project
+          \ gaudi_project
+          \ nextgroup=GaudiProjectRegion
+
 hi def link cmake_gaudi_add_library Function
 hi def link cmake_gaudi_add_module Function
 hi def link cmake_gaudi_add_dictionary Function
 hi def link cmake_gaudi_common_add_build Function
 hi def link cmake_gaudi_function_without_keyword Function
+hi def link cmake_gaudi_project Function
 hi def link GaudiAddLibraryArguments ModeMsg
 hi def link GaudiAddModuleArguments ModeMsg
 hi def link GaudiAddDictionaryArguments ModeMsg
 hi def link GaudiCommonAddBuildArguments ModeMsg
+hi def link GaudiProjectArguments ModeMsg
 
-syntax cluster cmakeGaudi contains=GaudiAddLibraryArguments,GaudiAddLibraryRegion,GaudiAddModuleArguments,GaudiAddModuleRegion,GaudiAddDictionaryArguments,GaudiAddDictionaryRegion,GaudiCommonAddBuildRegion,GaudiCommonAddBuildArguments,cmake_gaudi_add_library,cmake_gaudi_add_module,cmake_gaudi_common_add_build,cmake_gaudi_add_dictionary,BareParentheses,cmake_gaudi_function_without_keyword
+syntax cluster cmakeGaudi contains=GaudiAddLibraryArguments,GaudiAddLibraryRegion,GaudiAddModuleArguments,GaudiAddModuleRegion,GaudiAddDictionaryArguments,GaudiAddDictionaryRegion,GaudiCommonAddBuildRegion,GaudiCommonAddBuildArguments,cmake_gaudi_add_library,cmake_gaudi_add_module,cmake_gaudi_common_add_build,cmake_gaudi_add_dictionary,BareParentheses,cmake_gaudi_function_without_keyword,GaudiProjectArguments,GaudiProjectRegion,cmake_gaudi_project
 
 let &cpo = s:keepcpo
 unlet s:keepcpo
