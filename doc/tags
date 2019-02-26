@@ -1,0 +1,5 @@
+gaudi_add_library	vim-gaudi-cmake-syntax.txt	/*gaudi_add_library*
+gaudi_depends_on_subdirs	vim-gaudi-cmake-syntax.txt	/*gaudi_depends_on_subdirs*
+gaudi_project	vim-gaudi-cmake-syntax.txt	/*gaudi_project*
+ref-gaudi-cmake-copyright	vim-gaudi-cmake-syntax.txt	/*ref-gaudi-cmake-copyright*
+vim-gaudi-cmake-syntax.txt	vim-gaudi-cmake-syntax.txt	/*vim-gaudi-cmake-syntax.txt*

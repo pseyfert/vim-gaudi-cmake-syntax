@@ -1,0 +1,82 @@
+*vim-gaudi-cmake-syntax.txt*   Gaudi-cmake Reference             Nov 07, 2018
+
+Author:     Paul Seyfert  <pseyfert@cern.ch>
+Copyright:  (C) 2018 CERN for the benefit of the LHCb collaboration *ref-gaudi-cmake-copyright*
+License:    GPL3 license {{{
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    In applying this licence, CERN does not waive the privileges and immunities
+    granted to it by virtue of its status as an Intergovernmental Organization
+    or submit itself to any jurisdiction.
+    }}}
+
+
+=============================================================================
+GAUDI-ADD-LIBRARY                                                  *gaudi_add_library* {{{1
+
+Extension of standard CMake 'add_library' command.
+Create a library from the specified sources (glob patterns are allowed), linking
+it with the libraries specified and adding the include directories to the search path >
+
+  gaudi_add_library(<name>
+                    source1 source2 ...
+                    LINK_LIBRARIES library1 library2 ...
+                    INCLUDE_DIRS dir1 package2 ...
+                    [NO_PUBLIC_HEADERS | PUBLIC_HEADERS dir1 dir2 ...])
+<
+ 
+=============================================================================
+GAUDI-PROJECT                                                  *gaudi_project* {{{1
+
+Main macro for a Gaudi-based project.
+Each project must call this macro once in the top-level CMakeLists.txt,
+stating the project name and the version in the LHCb format (vXrY[pZ]).
+
+The USE list can be used to declare which Gaudi-based projects are required by
+the broject being compiled.
+
+The TOOLS list can be used to declare the tools version to be used. These contribute to
+the CMAKE_PREFIX_PATH and CMAKE_MODULE_PATH but are not themselves treated as projects.
+
+The DATA list can be used to declare the data packages requried by the project
+runtime.
+
+The FORTRAN option enable the FOTRAN language for the project. >
+
+  gaudi_project(project version
+                [USE proj1 vers1 [proj2 vers2 ...]]
+                [TOOLS tool vers]
+                [DATA package [VERSION vers] [package [VERSION vers] ...]]
+                [FORTRAN])
+<
+ 
+=============================================================================
+GAUDI-DEPENDS-ON-SUBDIRS                                  *gaudi_depends_on_subdirs* {{{1
+
+The presence of this function in a CMakeLists.txt is used by gaudi_sort_subdirectories
+to get the dependencies from the subdirectories before actually adding them.
+
+The fuction performs those operations that are not needed if there is no
+dependency declared.
+
+The arguments are actually ignored, so there is a check to execute it only once. >
+
+  gaudi_depends_on_subdirs(subdir1 [subdir2 ...])
+
+<
+
+=============================================================================
+Modelines: {{{1
+vim:tw=78:ts=8:ft=help:fdm=marker:
